@@ -1,3 +1,5 @@
+const axios = require('axios').default;
+
 exports.handler = async (event, context, callback) => {
 
   const data = JSON.parse(event.body)
