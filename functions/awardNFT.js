@@ -17,5 +17,5 @@ exports.handler = async (event, context, callback) => {
     email: data.email
   }, { headers: { "Authorization": `Bearer ${token}` } });
   console.log(response2)
-  return(response2)
+  return { statusCode: 200 }
 };
