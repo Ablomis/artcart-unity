@@ -11,7 +11,6 @@ exports.handler = async (event, context, callback) => {
     audience: 'platform.artcart.app/api/transactional/'
   });
   const token = response.data.access_token;
-  logger.info(response)
 
   const response2 = await axios.post(`https://platform.artcart.cloud/api/transactional/nft`, {
     cid: data.cid,
