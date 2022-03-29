@@ -24,18 +24,21 @@ exports.handler = async (event, context, callback) => {
     {
         eligibleTemplates.push(templatesList[i]);
     }
+  }
+  if(eligibleTemplates.length>0){
     //ADD ANY CUSTOM LOGIC HERE
     /*
     //------------------------
     */
+    const index = Math.floor(Math.random()*eligibleTemplates.length);
+    const cid = eligibleTemplates[index].cid;
+
+    const responseNFT = await axios.post(`https://platform.artcart.cloud/api/transactional/nft`, {
+      cid: cid,
+      email: data.email
+    }, { headers: { "Authorization": `Bearer ${token}` } });
+    console.log(responseNFT)
+    return { statusCode: 200 }
   }
-
-  
-
-  const responseNFT = await axios.post(`https://platform.artcart.cloud/api/transactional/nft`, {
-    cid: data.cid,
-    email: data.email
-  }, { headers: { "Authorization": `Bearer ${token}` } });
-  console.log(responseNFT)
-  return { statusCode: 200 }
+  return { statusCode: 400 }
 };
