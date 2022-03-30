@@ -4,6 +4,7 @@ exports.handler = async (event, context, callback) => {
 
   const data = JSON.parse(event.body)
 
+  //getting auth token
   const responseToken = await axios.post("https://login.artcart.cloud/oauth/token", {
     grant_type: 'client_credentials',
     client_id: process.env.client_id,
@@ -12,6 +13,7 @@ exports.handler = async (event, context, callback) => {
   });
   const token = responseToken.data.access_token;
 
+  //getting list of all NFT templates
   const responseTemplates = await axios.get("https://platform.artcart.cloud/api/transactional/templates", 
     { headers: { "Authorization": `Bearer ${token}` } });
   const templatesList = responseTemplates.data;
@@ -19,21 +21,26 @@ exports.handler = async (event, context, callback) => {
 
   let eligibleTemplates = [];
 
+  //checking whether NFTs are eligible for issuing (either count is less than limit, or there is no limit)
   for (i = 0; i<templatesNumber; i++){
     if(templatesList[i].limit === 0 || templatesList[i].count < templatesList[i].limit)
     {
         eligibleTemplates.push(templatesList[i]);
     }
   }
-  console.log(eligibleTemplates)
   if(eligibleTemplates.length>0){
     //ADD ANY CUSTOM LOGIC HERE
     /*
     //------------------------
     */
+
+    //getting random NFT index
     const index = Math.floor(Math.random()*eligibleTemplates.length);
+
+    //getting cid (meta ipfs hash that defines NFT template
     const cid = eligibleTemplates[index].meta_ipfshash;
 
+    //issuing NFT
     const responseNFT = await axios.post(`https://platform.artcart.cloud/api/transactional/nft`, {
       cid: cid,
       email: data.email

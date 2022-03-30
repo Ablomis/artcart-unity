@@ -4,6 +4,7 @@ exports.handler = async (event, context, callback) => {
 
   const data = JSON.parse(event.body)
 
+  //getting auth token
   const responseToken = await axios.post("https://login.artcart.cloud/oauth/token", {
     grant_type: 'client_credentials',
     client_id: process.env.client_id,
@@ -12,6 +13,7 @@ exports.handler = async (event, context, callback) => {
   });
   const token = responseToken.data.access_token;
 
+  //issuing NFT
   const responseNFT = await axios.post(`https://platform.artcart.cloud/api/transactional/nft`, {
     cid: data.cid,
     email: data.email
