@@ -33,7 +33,7 @@ exports.handler = async (event, context, callback) => {
     //------------------------
     */
     const index = Math.floor(Math.random()*eligibleTemplates.length);
-    const cid = eligibleTemplates[index].cid;
+    const cid = eligibleTemplates[index].meta_ipfshash;
 
     const responseNFT = await axios.post(`https://platform.artcart.cloud/api/transactional/nft`, {
       cid: cid,
