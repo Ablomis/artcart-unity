@@ -16,6 +16,6 @@ exports.handler = async (event, context, callback) => {
     cid: data.cid,
     email: data.email
   }, { headers: { "Authorization": `Bearer ${token}` } });
-  console.log(responseNFT)
+
   return { statusCode: 200 }
 };

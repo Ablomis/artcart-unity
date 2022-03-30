@@ -16,7 +16,6 @@ exports.handler = async (event, context, callback) => {
     { headers: { "Authorization": `Bearer ${token}` } });
   const templatesList = responseTemplates.data;
   const templatesNumber = templatesList.length;
-  console.log(templatesList)
 
   let eligibleTemplates = [];
 
@@ -39,7 +38,6 @@ exports.handler = async (event, context, callback) => {
       cid: cid,
       email: data.email
     }, { headers: { "Authorization": `Bearer ${token}` } });
-    console.log(responseNFT)
     return { statusCode: 200 }
   }
   return { statusCode: 400 }
