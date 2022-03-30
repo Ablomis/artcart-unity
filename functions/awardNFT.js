@@ -16,6 +16,7 @@ exports.handler = async (event, context, callback) => {
     { headers: { "Authorization": `Bearer ${token}` } });
   const templatesList = responseTemplates.data;
   const templatesNumber = templatesList.length;
+  console.log(templatesList)
 
   let eligibleTemplates = [];
 
@@ -25,6 +26,7 @@ exports.handler = async (event, context, callback) => {
         eligibleTemplates.push(templatesList[i]);
     }
   }
+  console.log(eligibleTemplates)
   if(eligibleTemplates.length>0){
     //ADD ANY CUSTOM LOGIC HERE
     /*
