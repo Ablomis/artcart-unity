@@ -29,7 +29,7 @@ exports.handler = async (event, context, callback) => {
 
   const headers = {
     'Access-Control-Allow-Origin': '*',
-    'Access-Control-Allow-Headers': '*',
+    'Access-Control-Allow-Headers': 'Access-Control-Allow-Headers, Content-Type, Authorization',
     'Access-Control-Allow-Methods': '*',
     "Content-Type": 'application/json',
     'Accept': 'application/json'
