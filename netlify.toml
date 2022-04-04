@@ -10,5 +10,3 @@
     Access-Control-Allow-Methods = "GET, POST, PUT, DELETE,OPTIONS"
     Accept= "application/json"
     Content-Type= "application/json"
-    X-Content-Type-Options= “nosniff”
-    Cache-Control= “public, max-age=0”

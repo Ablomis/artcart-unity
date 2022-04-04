@@ -2,10 +2,10 @@
   # Define which paths this specific [[headers]] block will cover.
   for = "/*"
     [headers.values]
-    Access-Control-Allow-Origin = "*"
-    Access-Control-Allow-Headers = "Content-Type, Authorization"
-    Access-Control-Allow-Methods = "GET, POST, PUT, DELETE,OPTIONS"
-    Accept= "application/json"
-    Content-Type= "application/json"
-    X-Content-Type-Options= “nosniff”
-    Cache-Control= “public, max-age=0”
+    Access-Control-Allow-Origin: "*"
+    Access-Control-Allow-Headers: "Content-Type, Authorization"
+    Access-Control-Allow-Methods: "GET, POST, PUT, DELETE,OPTIONS"
+    Accept: "application/json"
+    Content-Type: "application/json"
+    X-Content-Type-Options: “nosniff”
+    Cache-Control: “public, max-age=0”
