@@ -45,7 +45,16 @@ exports.handler = async (event, context, callback) => {
       cid: cid,
       email: data.email
     }, { headers: { "Authorization": `Bearer ${token}` } });
-    return { statusCode: 200 }
+    const headers = {
+      'Access-Control-Allow-Origin': '*',
+      'Access-Control-Allow-Headers': 'Content-Type, Authorization',
+      'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE'
+    };
+  
+    return { 
+      statusCode: 200, 
+      headers: headers, 
+    }
   }
-  return { statusCode: 400 }
+  return { statusCode: 400,headers: headers }
 };
