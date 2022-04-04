@@ -11,4 +11,3 @@
     Accept= "application/json"
     Content-Type= "application/json"
     X-Content-Type-Options= “nosniff”
-    Cache-Control= “public, max-age=0”
