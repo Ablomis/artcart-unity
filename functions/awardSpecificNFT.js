@@ -2,14 +2,6 @@ const axios = require('axios').default;
 
 exports.handler = async (event, context, callback) => {
 
-  callback(null, {
-    statusCode: 200,
-    body: "Hello, world!",
-    headers: {
-      "access-control-allow-origin": "*",
-    },
-  });
-
   const data = JSON.parse(event.body)
 
   //getting auth token
@@ -31,7 +23,7 @@ exports.handler = async (event, context, callback) => {
     'Access-Control-Allow-Origin': '*',
     'Access-Control-Allow-Headers': 'Access-Control-Allow-Headers, Content-Type, Authorization',
     'Access-Control-Allow-Methods': '*',
-    "Content-Type": 'application/json',
+    'Content-Type': 'application/json',
     'Accept': 'application/json'
   };
 
