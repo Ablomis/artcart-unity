@@ -2,6 +2,14 @@ const axios = require('axios').default;
 
 exports.handler = async (event, context, callback) => {
 
+  callback(null, {
+    statusCode: 200,
+    body: "Hello, world!",
+    headers: {
+      "access-control-allow-origin": "*",
+    },
+  });
+
   const data = JSON.parse(event.body)
 
   //getting auth token
@@ -19,5 +27,8 @@ exports.handler = async (event, context, callback) => {
     email: data.email
   }, { headers: { "Authorization": `Bearer ${token}` } });
 
-  return { statusCode: 200 }
+  return { 
+    statusCode: 200, 
+    headers: {"Access-Control-Allow-Origin": "*"}, 
+  }
 };
